@@ -4,7 +4,7 @@ import { RolePolicyProps } from "./types";
 
 export class ApiGatewayPolicy {
   constructor(stack: Stack, { role }: RolePolicyProps) {
-    const lambdaPolicy = new ManagedPolicy(stack, "LambdaPolicy", {
+    const lambdaPolicy = new ManagedPolicy(stack, "ApiGatewayPolicy", {
       description: `Policy to manage API Gateway: ${stack.stackName}`,
       roles: [role],
     });
