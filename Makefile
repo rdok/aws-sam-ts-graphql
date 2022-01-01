@@ -36,7 +36,7 @@ deploy-dev:
 		--stack-name "$${ORG}-dev-$${NAME}" \
 		--s3-bucket "$${ORG}-cicd-$${NAME}" \
 		--s3-prefix "dev" \
-		--region  $${AWS_REGION} \
+		--region $${AWS_REGION} \
 		--capabilities CAPABILITY_IAM \
 		--no-fail-on-empty-changeset
 
