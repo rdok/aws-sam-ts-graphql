@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const event = {
-  body: null,
+  body: '{"query":"query { healthCheck }"}',
   headers: {
     Accept: "*/*",
     Host: "127.0.0.1:3000",
@@ -9,7 +9,7 @@ const event = {
     "X-Forwarded-Port": "3000",
     "X-Forwarded-Proto": "http",
   },
-  httpMethod: "GET",
+  httpMethod: "POST",
   isBase64Encoded: false,
   multiValueHeaders: {
     Accept: ["*/*"],
@@ -17,9 +17,10 @@ const event = {
     "User-Agent": ["curl/7.68.0"],
     "X-Forwarded-Port": ["3000"],
     "X-Forwarded-Proto": ["http"],
+    "content-type": ["application/json"],
   },
   multiValueQueryStringParameters: null,
-  path: "/test",
+  path: "/",
   pathParameters: { proxy: "test" },
   queryStringParameters: null,
   requestContext: {
