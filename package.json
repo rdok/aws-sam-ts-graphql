@@ -1,5 +1,5 @@
 {
-  "name": "aws-sam-ts",
+  "name": "aws-sam-ts-graphql",
   "version": "1.0.0",
   "description": "Rapidly create AWS SAM microservices. GitHub template to jumpstart common work.",
   "scripts": {
