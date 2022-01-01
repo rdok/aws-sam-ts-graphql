@@ -21,4 +21,4 @@ const GraphqlHandler = server.createHandler({
   },
 });
 
-export default GraphqlHandler;
+export { GraphqlHandler };

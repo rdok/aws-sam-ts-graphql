@@ -4,14 +4,14 @@ export ORG=$(shell jq -r '.org' infrastructurerc.json)
 export AWS_CICD_STACK_NAME=$(shell echo "${ORG}-cicd-${NAME}")
 export AWS_PROFILE=cicd_aws_sam_ts_graphql
 
-InvokeExampleFunction:
+InvokeGraphQL:
 	node events/generate-api-gateway-event.js
-	npm run build
+	make build
 	sam local invoke \
 		--event events/APIGatewayProxyEvent.json \
 		--template-file infrastructure.yml \
 		--env-vars .env.json \
-		'ExampleFunction'
+		'GraphQL'
 
 start: node_modules
 	make build

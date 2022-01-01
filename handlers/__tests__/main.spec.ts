@@ -15,7 +15,7 @@ it("checks health status", async () => {
 });
 
 async function makeHandlerForHealthCheck(): Promise<any> {
-  const { default: handler } = await import("../main");
+  const { GraphqlHandler } = await import("../main");
   const event = createMock<APIGatewayProxyEvent>({
     httpMethod: "POST",
     path: "/",
@@ -24,5 +24,5 @@ async function makeHandlerForHealthCheck(): Promise<any> {
   });
   const context = createMock<Context>();
   const callback = createMock<APIGatewayProxyCallback>();
-  return handler(event, context, callback);
+  return GraphqlHandler(event, context, callback);
 }
