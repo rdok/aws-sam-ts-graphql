@@ -1,11 +1,28 @@
 AWSTemplateFormatVersion: 2010-09-09
 Transform: AWS::Serverless-2016-10-31
 Resources:
-  ExampleFunction:
+  API:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: "Prod"
+      Cors:
+        AllowCredentials: true
+        AllowHeaders: "'content-type'"
+        AllowMethods: "'GET, OPTIONS, POST'"
+        AllowOrigin: "'https://studio.apollographql.com'"
+        MaxAge: "'31536000'"
+  GraphQL:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: dist/handlers/handler-example.handle
+      Handler: dist/handlers/main.graphqlHandler
       Runtime: nodejs14.x
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Method: ANY
+            Path: /graphql
+            RestApiId: { Ref: API }
       Environment:
         Variables:
           ENV_EXAMPLE: "example_env_value"
