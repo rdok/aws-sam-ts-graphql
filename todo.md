@@ -1,0 +1,1 @@
+- Write extensive guide to set up this repository

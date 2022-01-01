@@ -1,0 +1,7 @@
+{
+  "name": "aws-sam-ts",
+  "region": "eu-west-1",
+  "org": "rdok",
+  "testEnvironment": "test",
+  "allowedEnvironments": ["prod", "test", "dev"]
+}
