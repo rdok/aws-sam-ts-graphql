@@ -17,10 +17,11 @@ it("checks health status", async () => {
 async function makeHandlerForHealthCheck(): Promise<any> {
   const { GraphqlHandler } = await import("../main");
   const event = createMock<APIGatewayProxyEvent>({
+    isBase64Encoded: false,
     httpMethod: "POST",
     path: "/",
-    multiValueHeaders: { "content-type": ["application/json"] },
-    body: '{"query":"query { healthCheck }"}',
+    multiValueHeaders: { "Content-Type": ["application/json"] },
+    body: JSON.stringify({ query: "{ healthCheck }" }),
   });
   const context = createMock<Context>();
   const callback = createMock<APIGatewayProxyCallback>();

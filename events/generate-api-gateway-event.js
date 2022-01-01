@@ -17,10 +17,10 @@ const event = {
     "User-Agent": ["curl/7.68.0"],
     "X-Forwarded-Port": ["3000"],
     "X-Forwarded-Proto": ["http"],
-    "content-type": ["application/json"],
+    "Content-Type": ["application/json"],
   },
   multiValueQueryStringParameters: null,
-  path: "/",
+  path: "/graphql",
   pathParameters: { proxy: "test" },
   queryStringParameters: null,
   requestContext: {
