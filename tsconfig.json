@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "dist",
+    "esModuleInterop": true,
     "experimentalDecorators": true,
     "target": "ES2018",
     "module": "commonjs",
