@@ -1,7 +1,7 @@
 export class ClassExample {
   async functionExample(): Promise<string> {
-    const response = process.env.ENV_EXAMPLE;
-    if (response === undefined) throw Error("Environment ENV_EXAMPLE not set.");
+    const response = process.env.NODE_ENV;
+    if (response === undefined) throw Error("Environment NODE_ENV not set.");
     return Promise.resolve(response);
   }
 }
