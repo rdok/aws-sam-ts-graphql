@@ -1,5 +1,9 @@
 AWSTemplateFormatVersion: 2010-09-09
 Transform: AWS::Serverless-2016-10-31
+Parameters:
+  NodeENV:
+    Type: String
+    Default: 'development'
 Resources:
   API:
     Type: AWS::Serverless::Api
@@ -22,7 +26,7 @@ Resources:
           Properties: { Method: ANY, Path: "/graphql", RestApiId: { Ref: API } }
       Environment:
         Variables:
-          ENV_EXAMPLE: "example_env_value"
+          NODE_ENV: !Ref NodeENV
 Outputs:
   GraphQLEndpoint:
     Description: "API Gateway endpoint URL"

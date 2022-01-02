@@ -10,7 +10,7 @@ InvokeGraphQL:
 	sam local invoke \
 		--event events/APIGatewayProxyEvent.json \
 		--template-file infrastructure.yml \
-		--env-vars .env.json \
+		--env-vars .env.dev.json \
 		'GraphQL'
 
 start: node_modules

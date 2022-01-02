@@ -36,6 +36,13 @@ jobs:
             printf '%s\n' "ENVIRONMENT is not in accepted range" >&2
             exit 1
           fi
+          
+          PROD_ENVIRONMENT=$(jq -r '.productionEnvironment' infrastructurerc.json)
+          if [ "$ENVIRONMENT" == "$PROD_ENVIRONMENT" ]; then 
+            echo "nodejs_env=production" >> $GITHUB_ENV
+          else
+            echo "nodejs_env=development" >> $GITHUB_ENV
+          fi
 
           ORG=$(jq -r '.org' infrastructurerc.json)
           NAME=$(jq -r '.name' infrastructurerc.json)
