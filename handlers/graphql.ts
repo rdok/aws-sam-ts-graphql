@@ -1,16 +1,10 @@
-import { ApolloServer, gql } from "apollo-server-lambda";
+import { ApolloServer } from "apollo-server-lambda";
 
-const typeDefs = gql`
-  type Query {
-    healthCheck: String
-  }
-`;
+import { ApolloConfig } from "../lib/apollo-config";
 
-const resolvers = { Query: { healthCheck: () => "alive" } };
+const graphql = new ApolloServer(ApolloConfig);
 
-const server = new ApolloServer({ typeDefs, resolvers });
-
-const handler = server.createHandler({
+const handler = graphql.createHandler({
   expressGetMiddlewareOptions: {
     cors: {
       origin: "https://studio.apollographql.com",
