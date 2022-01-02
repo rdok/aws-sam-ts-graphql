@@ -10,7 +10,7 @@ Resources:
         AllowHeaders: "'content-type'"
         AllowMethods: "'GET, OPTIONS, POST'"
         AllowOrigin: "'https://studio.apollographql.com'"
-        MaxAge: "'31536000'"
+        MaxAge: "'3600'"
   GraphQL:
     Type: AWS::Serverless::Function
     Properties:
@@ -19,10 +19,7 @@ Resources:
       Events:
         Api:
           Type: Api
-          Properties:
-            Method: ANY
-            Path: /graphql
-            RestApiId: { Ref: API }
+          Properties: { Method: ANY, Path: '/graphql', RestApiId: { Ref: API } }
       Environment:
         Variables:
           ENV_EXAMPLE: "example_env_value"
