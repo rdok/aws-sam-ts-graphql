@@ -18,7 +18,7 @@ Apollo GraphQL Server template with AWS SAM, TypeScript & Lambda.
 - Automates dependency updates for GitHub actions dependencies.
 - Reuses CI checks through [reusable GitHub workflows](https://docs.github.com/en/actions/learn-github-actions/reusing-workflows)
 - Ensures [![Deploy][badge_svg_deploy]][workflow_link_deploy] workflow runs at a time through GitHub's [concurrency](https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#concurrency) feature.
-- 
+ 
 # Setup
 - [Use this template][use_this_template] to create a new GitHub repository.
 - Clone your repository on your local machine.
