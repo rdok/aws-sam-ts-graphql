@@ -49,6 +49,8 @@ update-all-npm:
 
 test-watch:
 	npm run test:watch
+test:
+	npm run test
 
 prettier:
 	npm run prettier
@@ -70,3 +72,5 @@ build:
 
 node_modules:
 	npm ci
+
+check: test prettier lint

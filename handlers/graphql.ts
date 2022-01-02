@@ -10,7 +10,7 @@ const resolvers = { Query: { healthCheck: () => "alive" } };
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
-const GraphqlHandler = server.createHandler({
+const handler = server.createHandler({
   expressGetMiddlewareOptions: {
     cors: {
       origin: "https://studio.apollographql.com",
@@ -21,4 +21,4 @@ const GraphqlHandler = server.createHandler({
   },
 });
 
-export { GraphqlHandler };
+export { handler };
