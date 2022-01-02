@@ -13,7 +13,10 @@ InvokeGraphQL:
 		--env-vars .env.dev.json \
 		'GraphQL'
 
-start: node_modules
+start-dev: node_modules
+	npm run dev
+
+start-sam: node_modules
 	make build
 	sam local start-api --port 3003
 
