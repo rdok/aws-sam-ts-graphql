@@ -28,7 +28,7 @@
       }
     ]
   },
-  "include": ["handlers", "lib", "jest"],
+  "include": ["handlers", "lib", "dev"],
   "exclude": [
     "node_modules",
     "cicd-authorisation",

@@ -9,9 +9,9 @@ module.exports = {
     "<rootDir>/node_modules",
   ],
   transformIgnorePatterns: ["^.+\\.js$", "node_modules"],
-  setupFilesAfterEnv: ["<rootDir>/jest/setupFilesAfterEnv.ts"],
-  setupFiles: ["<rootDir>/jest/setupFiles.ts"],
-  modulePaths: ["<rootDir>/jest/factories"],
+  setupFilesAfterEnv: ["<rootDir>/dev/jest/setupFilesAfterEnv.ts"],
+  setupFiles: ["<rootDir>/dev/jest/setupFiles.ts"],
+  modulePaths: ["<rootDir>/dev/jest/factories"],
   transform: {
     ".(ts|tsx)": "ts-jest",
   },
