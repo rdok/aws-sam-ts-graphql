@@ -9,7 +9,7 @@
     "test:watch": "jest --watch --verbose",
     "lint": "eslint ./ --max-warnings 0",
     "lint:fix": "eslint ./ --fix",
-    "build": "rm -rf dist && tsc -p ."
+    "build": "tsc"
   },
   "author": "Rizart Dokollari",
   "license": "MIT",
