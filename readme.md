@@ -3,7 +3,7 @@
 [![Deploy][badge_svg_deploy]][workflow_link_deploy]
 [![Check][badge_svg_check]][workflow_link_check]
 
-Apollo GraphQL Server template with AWS SAM, TypeScript & Lambda. Boilerplate with GitHub CI/CD actions, best security practises such as least privileges IAM policies, automated dependency updates and much more.
+Apollo GraphQL Server template with AWS SAM, TypeScript & Lambda.
 
 # Features
 
