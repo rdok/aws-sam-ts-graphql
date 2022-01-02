@@ -16,6 +16,7 @@ jobs:
   deploy:
     environment:
       name: ${{ github.event.inputs.environment == '' && 'test' || github.event.inputs.environment }}
+      url: ${{ steps.github_environment_url.outputs.value }}
     concurrency: ${{ github.event.inputs.environment == '' && 'test' || github.event.inputs.environment }}
     needs: [check]
     runs-on: ubuntu-20.04
@@ -93,3 +94,11 @@ jobs:
             --capabilities CAPABILITY_IAM \
             --no-fail-on-empty-changeset \
             --no-confirm-changeset
+      - name: Set GitHub environment URL
+        id: github_environment_url
+        run: |
+          URL=$(aws cloudformation describe-stacks \
+              --stack-name ${{ env.aws_stack_name }} \
+              --query 'Stacks[0].Outputs[?OutputKey==`GraphQLEndpoint`].OutputValue' \
+              --output text)
+          echo ::set-output name=value::"${URL}"

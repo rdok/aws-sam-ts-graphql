@@ -24,6 +24,6 @@ Resources:
         Variables:
           ENV_EXAMPLE: "example_env_value"
 Outputs:
-  WebEndpoint:
+  GraphQLEndpoint:
     Description: "API Gateway endpoint URL"
-    Value: !Sub "https://${API}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
+    Value: !Sub "https://${API}.execute-api.${AWS::Region}.amazonaws.com/Prod/graphql"
