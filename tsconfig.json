@@ -5,10 +5,7 @@
     "experimentalDecorators": true,
     "target": "ES2018",
     "module": "commonjs",
-    "lib": [
-      "es2018",
-      "ES6"
-    ],
+    "lib": ["es2018", "ES6"],
     "declaration": false,
     "strict": true,
     "noImplicitAny": true,
@@ -22,27 +19,22 @@
     "inlineSourceMap": true,
     "inlineSources": true,
     "strictPropertyInitialization": false,
-    "typeRoots": [
-      "./node_modules/@types"
-    ],
+    "typeRoots": ["./node_modules/@types"],
     "plugins": [
       {
         "transform": "ts-auto-mock/transformer",
         "cacheBetweenTests": false,
-        "features": [
-          "random"
-        ]
+        "features": ["random"]
       }
     ]
   },
-  "include": ["handlers", "lib"],
+  "include": ["handlers", "lib", "jest"],
   "exclude": [
     "node_modules",
     "cicd-authorisation",
     ".aws-sam",
     ".github",
-    "dist",
-    "**/__tests__",
+    "dist"
   ],
   "emitDecoratorMetadata": true,
   "experimentalDecorators": true

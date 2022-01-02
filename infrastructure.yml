@@ -19,7 +19,7 @@ Resources:
       Events:
         Api:
           Type: Api
-          Properties: { Method: ANY, Path: '/graphql', RestApiId: { Ref: API } }
+          Properties: { Method: ANY, Path: "/graphql", RestApiId: { Ref: API } }
       Environment:
         Variables:
           ENV_EXAMPLE: "example_env_value"
