@@ -6,3 +6,9 @@ global.console = {
 beforeEach(() => {
   process.env.ENV_EXAMPLE = "mocked_env_example";
 });
+
+afterEach(() => {
+  // To mock modules from reusable make functions.
+  // Achieves cleaner and easier to read unit tests.
+  jest.resetModules();
+});
