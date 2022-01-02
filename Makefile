@@ -20,8 +20,11 @@ start: node_modules
 deploy-cicd-auth:
 	cd cicd-authorisation && make deploy
 
-deploy-dev:
+build-deploy-dev:
 	make build
+	make deploy-dev
+
+deploy-dev:
 	AWS_ROLE_ARN=$$(aws --profile $$AWS_PROFILE --region $$AWS_REGION \
 		cloudformation describe-stacks --stack-name $$AWS_CICD_STACK_NAME \
 		--query 'Stacks[0].Outputs[?OutputKey==`CICDRoleARN`].OutputValue' \
