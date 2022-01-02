@@ -3,12 +3,12 @@
 [![Deploy][badge_svg_deploy]][workflow_link_deploy]
 [![Check][badge_svg_check]][workflow_link_check]
 
-Rapidly create AWS SAM microservices. GitHub template to jumpstart common work.
+Apollo GraphQL template with AWS SAM, NodeJS & TypeScript. Boilerplate with GitHub CI/CD actions, best security practises such as least privileges IAM policies, automated dependency updates and much more.
 
 # Features
 
 - Compiles NodeJS TypeScript to JS for AWS Lambda.
-- Uses SAM template to create Lambda function
+- Uses SAM template to create API Gateway, Lambda function with GraphQL
 - Unit tests the Lambda handlers & libraries.
 - Runs CI/CD pipelines through GitHub Actions.
 - [Grants the least privileges](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege) CI/CD security best practise; through AWS CDK unit tested.
