@@ -101,7 +101,9 @@ jobs:
             --stack-name ${{ env.aws_stack_name }} \
             --capabilities CAPABILITY_IAM \
             --no-fail-on-empty-changeset \
-            --no-confirm-changeset
+            --no-confirm-changeset \
+            --parameter-overrides "NodeENV=${{ env.nodejs_env }}"
+
       - name: Set GitHub environment URL
         id: github_environment_url
         run: |
