@@ -1,4 +1,4 @@
-import { Context } from "../data-sources";
+import { Context } from "../context";
 
 const Query = {
   launch: async (parent: unknown, args: { id: string }, context: Context) => {

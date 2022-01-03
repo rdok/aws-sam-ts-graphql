@@ -3,7 +3,7 @@ import { createMock } from "ts-auto-mock";
 import { Launch } from "../../spacex-api/types";
 import { LaunchTransformer } from "../../spacex-api/launch-transformer";
 import { LaunchApi } from "../../spacex-api/launch-api";
-import { Context } from "../../data-sources";
+import { Context } from "../../context";
 
 describe("Query.launch", () => {
   it("fetches the requested launch", async () => {

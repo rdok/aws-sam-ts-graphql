@@ -1,7 +1,7 @@
 import { ApolloServer } from "apollo-server";
 import { typeDefs } from "../lib/schema";
 import { resolvers } from "../lib/resolvers";
-import { dataSources } from "../lib/data-sources";
+import { dataSources } from "../lib/context";
 import * as ioc from "../lib/ioc";
 
 const server = new ApolloServer({
