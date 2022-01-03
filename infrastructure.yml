@@ -18,8 +18,8 @@ Resources:
   GraphQL:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: graphql.handler
-      CodeUri: dist/handlers
+      Handler: handlers/graphql.handler
+      CodeUri: dist
       Runtime: nodejs14.x
       Events:
         Api:

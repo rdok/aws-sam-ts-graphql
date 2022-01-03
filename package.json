@@ -7,7 +7,8 @@
   "version": "1.0.0",
   "description": " Apollo GraphQL Server template with AWS SAM, TypeScript & Lambda. Boilerplate with GitHub CI/CD actions, best security practises such as least privileges IAM policies, automated dependency updates and much more. ",
   "scripts": {
-    "build": "tsc",
+    "prebuild": "rm -rf dist/",
+    "build": "tsc && cp package* dist/",
     "dev": "nodemon --config dev/nodemon.json dev/server.ts",
     "lint": "eslint ./ --max-warnings 0",
     "lint:fix": "eslint ./ --fix",
