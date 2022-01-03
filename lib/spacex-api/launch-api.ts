@@ -8,7 +8,7 @@ export type PaginationProps = {
 
 export class LaunchApi extends SpaceXApi {
   async query(props: PaginationProps = {}): Promise<Launches> {
-    return this.post("launches/query", props);
+    return this.post("launches/query", { options: props });
   }
 
   async find(props: { id: string }): Promise<Launch> {

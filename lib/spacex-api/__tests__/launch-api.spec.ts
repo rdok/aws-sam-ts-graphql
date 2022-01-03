@@ -13,7 +13,9 @@ describe("Query", () => {
   it("paginates and limits results", async () => {
     const { launchApi, post } = await makeLaunchApi();
     await launchApi.query({ page: 2, limit: 3 });
-    expect(post).toHaveBeenCalledWith(expect.anything(), { page: 2, limit: 3 });
+    expect(post).toHaveBeenCalledWith(expect.anything(), {
+      options: { page: 2, limit: 3 },
+    });
   });
 });
 
