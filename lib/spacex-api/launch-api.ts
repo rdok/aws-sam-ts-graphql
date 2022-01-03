@@ -1,4 +1,5 @@
 import { SpaceXApi } from "./spacex-api";
+import { Launch } from "./launch-transformer";
 
 type Props = {
   page?: number;
@@ -10,7 +11,7 @@ export class LaunchApi extends SpaceXApi {
     return this.post("launches/query", props);
   }
 
-  async find(props: { id: string }) {
+  async find(props: { id: string }): Promise<Launch> {
     return this.get(`launches/${props.id}`);
   }
 }
