@@ -1,7 +1,4 @@
-export type Launch = {
-  id: string;
-  name: string;
-};
+import { Launch } from "./types";
 
 export class LaunchTransformer {
   transform(launch: Launch) {

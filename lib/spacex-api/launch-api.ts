@@ -1,5 +1,5 @@
 import { SpaceXApi } from "./spacex-api";
-import { Launch } from "./launch-transformer";
+import { Launch } from "./types";
 
 type Props = {
   page?: number;

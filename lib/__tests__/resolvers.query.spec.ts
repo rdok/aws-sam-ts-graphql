@@ -1,7 +1,8 @@
 import { Context, resolvers } from "../resolvers";
 import { createMock } from "ts-auto-mock";
 import { LaunchApi } from "../spacex-api/launch-api";
-import { Launch, LaunchTransformer } from "../spacex-api/launch-transformer";
+import { LaunchTransformer } from "../spacex-api/launch-transformer";
+import { Launch } from "../spacex-api/types";
 
 describe("Query.launch", () => {
   it("fetches the requested launch", async () => {
