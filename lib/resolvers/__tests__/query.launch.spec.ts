@@ -1,50 +1,22 @@
 import { resolvers } from "../index";
-import { createMock } from "ts-auto-mock";
-import { Launch } from "../../spacex-api/types";
-import { LaunchTransformer } from "../../spacex-api/launch-transformer";
-import { LaunchApi } from "../../spacex-api/launch-api";
-import { Context } from "../../context";
+import { makeContext } from "./makers";
 
 describe("Query.launch", () => {
   it("fetches the requested launch", async () => {
-    const { args, context, launchApi } = makeContext();
-    await resolvers.Query.launch(null, args, context);
-    expect(launchApi.find).toHaveBeenCalledWith(args);
+    const { launchArgs, context, launchApi } = makeContext();
+    await resolvers.Query.launch(null, launchArgs, context);
+    expect(launchApi.find).toHaveBeenCalledWith(launchArgs);
   });
 
   it("transforms the fetched launch", async () => {
-    const { args, context, launchTransformer, launch } = makeContext();
-    await resolvers.Query.launch(null, args, context);
+    const { launchArgs, context, launchTransformer, launch } = makeContext();
+    await resolvers.Query.launch(null, launchArgs, context);
     expect(launchTransformer.transform).toHaveBeenCalledWith(launch);
   });
 
-  it("returns the transformed launch", async () => {
-    const { args, context, transformedLaunch } = makeContext();
-    const response = await resolvers.Query.launch(null, args, context);
+  it("returns the transformed launches", async () => {
+    const { launchArgs, context, transformedLaunch } = makeContext();
+    const response = await resolvers.Query.launch(null, launchArgs, context);
     expect(response).toEqual(transformedLaunch);
   });
 });
-
-function makeContext() {
-  const args = { id: "uuid" };
-  const launch = createMock<Launch>();
-  const transformedLaunch = jest.fn();
-  const launchApi = createMock<LaunchApi>({
-    find: jest.fn().mockResolvedValueOnce(launch),
-  });
-  const launchTransformer = createMock<LaunchTransformer>({
-    transform: jest.fn().mockReturnValueOnce(transformedLaunch),
-  });
-  const context: Context = {
-    dataSources: { launchApi },
-    ioc: { launchTransformer },
-  };
-  return {
-    launchApi,
-    launch,
-    context,
-    launchTransformer,
-    transformedLaunch,
-    args,
-  };
-}
