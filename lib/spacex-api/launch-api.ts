@@ -1,13 +1,13 @@
 import { SpaceXApi } from "./spacex-api";
-import { Launch } from "./types";
+import { Launch, Launches } from "./types";
 
-type Props = {
+export type PaginationProps = {
   page?: number;
   limit?: number;
 };
 
 export class LaunchApi extends SpaceXApi {
-  async query(props: Props = {}) {
+  async query(props: PaginationProps = {}): Promise<Launches> {
     return this.post("launches/query", props);
   }
 
