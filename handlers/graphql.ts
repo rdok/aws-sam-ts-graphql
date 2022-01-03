@@ -1,10 +1,11 @@
 import { ApolloServer } from "apollo-server-lambda";
+import { typeDefs } from "../lib/schema";
+import { resolvers } from "../lib/resolvers";
+import { dataSources } from "../lib/data-sources";
 
-import { ApolloConfig } from "../lib/apollo-config";
+const graphql = new ApolloServer({ typeDefs, resolvers, dataSources });
 
-const graphql = new ApolloServer(ApolloConfig);
-
-const handler = graphql.createHandler({
+export const handler = graphql.createHandler({
   expressGetMiddlewareOptions: {
     cors: {
       origin: "https://studio.apollographql.com",
@@ -14,5 +15,3 @@ const handler = graphql.createHandler({
     },
   },
 });
-
-export { handler };
