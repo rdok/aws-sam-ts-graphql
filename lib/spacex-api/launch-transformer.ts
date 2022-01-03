@@ -1,4 +1,4 @@
-type Launch = {
+export type Launch = {
   id: string;
   name: string;
 };
