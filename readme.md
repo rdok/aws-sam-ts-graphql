@@ -5,6 +5,13 @@
 
 Apollo GraphQL Server template with AWS SAM, TypeScript & Lambda.
 
+### cURL GraphQL Request Example
+```
+curl --request POST \
+  --header 'content-type: application/json' \
+  --url 'https://4r0gh327k1.execute-api.eu-west-1.amazonaws.com/Prod/graphql' \
+  --data-raw '{"query":"query Launches($limit: Int, $page: Int, $launchId: ID!) { healthCheck launch(id: $launchId) { id } launches(limit: $limit, page: $page) { limit page data { id name } }}","variables":{"launchId":"5eb87cdbffd86e000604b32d","limit":3,"page":3},"operationName":"Launches"}'
+```
 # Features
 
 - Compiles NodeJS TypeScript to JS for AWS Lambda.
