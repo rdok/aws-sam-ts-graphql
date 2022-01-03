@@ -10,7 +10,9 @@ it("transforms a launch", () => {
 it("transforms a list of launches", () => {
   const { launchTransformer, launches } = makeMockedTransformer();
   launchTransformer.transformMany(launches);
-  expect(launchTransformer.transform).toHaveBeenCalledTimes(launches.length);
+  expect(launchTransformer.transform).toHaveBeenCalledTimes(
+    launches.docs.length
+  );
 });
 
 it("returns the list of transformed launches", () => {
@@ -23,7 +25,7 @@ it("returns the list of transformed launches", () => {
 function makeTransformer() {
   const launchTransformer = new LaunchTransformer();
   const launch = makeLaunch();
-  const launches = [launch, makeLaunch()];
+  const launches = { docs: [launch, makeLaunch()] };
   return { launchTransformer, launch, launches };
 }
 
