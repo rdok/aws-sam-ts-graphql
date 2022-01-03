@@ -1,4 +1,4 @@
-import { Launch } from "./types";
+import { Launch, Launches } from "./types";
 
 export class LaunchTransformer {
   transform(launch: Launch) {
@@ -8,8 +8,8 @@ export class LaunchTransformer {
     };
   }
 
-  transformMany(launches: Launch[]) {
-    return launches.map((launch: Launch) => {
+  transformMany(launches: Launches) {
+    return launches.docs.map((launch: Launch) => {
       return this.transform(launch);
     });
   }
