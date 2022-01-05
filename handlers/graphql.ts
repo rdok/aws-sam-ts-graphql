@@ -1,14 +1,29 @@
 import { ApolloServer } from "apollo-server-lambda";
-import { typeDefs } from "../lib/schema";
-import { resolvers } from "../lib/resolvers";
-import { dataSources } from "../lib/context";
-import * as ioc from "../lib/ioc";
+import { APIGatewayProxyEvent, Context } from "aws-lambda";
+import { Request, Response } from "express-serve-static-core";
+
+import { dataSources, ioc, resolvers, typeDefs } from "../lib";
 
 const graphql = new ApolloServer({
   typeDefs,
   resolvers,
   dataSources,
-  context: () => ({ ioc }),
+  context: (props: {
+    event: APIGatewayProxyEvent;
+    context: Context;
+    express: {
+      req: Request;
+      res: Response;
+    };
+  }) => {
+    const token = props.express.req.headers.authorization;
+    console.log(token);
+    // const user = getUser(token);
+    // we could also check user roles/permissions here
+    // if (!user) throw new AuthenticationError("you must be logged in");
+    // return { user, ioc };
+    return { ioc };
+  },
 });
 
 export const handler = graphql.createHandler({
