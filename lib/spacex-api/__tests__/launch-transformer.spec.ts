@@ -1,4 +1,3 @@
-import { company, datatype } from "faker";
 import { LaunchTransformer } from "../launch-transformer";
 
 it("transforms a launch", () => {
@@ -40,7 +39,7 @@ function makeMockedTransformer() {
 
 function makeLaunch() {
   return {
-    id: datatype.uuid(),
-    name: company.companyName(),
+    id: `5eb87cd9ffd86e000604b32a${new Date()}`,
+    name: `FalconSat ${new Date()}`,
   };
 }
