@@ -4,7 +4,7 @@ import { UserPolicyProps } from "./types";
 
 export class DescribeCloudformationStacks {
   constructor(stack: Stack, { user }: UserPolicyProps) {
-    const describeCloudformationPolicy = new ManagedPolicy(
+    const managedPolicy = new ManagedPolicy(
       stack,
       "DescribeCloudFormationPolicy",
       {
@@ -12,7 +12,7 @@ export class DescribeCloudformationStacks {
         users: [user],
       }
     );
-    describeCloudformationPolicy.addStatements(
+    managedPolicy.addStatements(
       new PolicyStatement({
         effect: Effect.ALLOW,
         resources: [
