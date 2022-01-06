@@ -4,26 +4,26 @@ import { RolePolicyProps } from "./types";
 
 export class ApiGatewayPolicy {
   constructor(stack: Stack, { role, stackRegex }: RolePolicyProps) {
-    const lambdaPolicy = new ManagedPolicy(stack, "ApiGatewayPolicy", {
+    const managedPolicy = new ManagedPolicy(stack, "ApiGatewayPolicy", {
       description: `Policy to manage API Gateway: ${stack.stackName}`,
       roles: [role],
     });
 
-    lambdaPolicy.addStatements(
+    managedPolicy.addStatements(
       new PolicyStatement({
         effect: Effect.ALLOW,
         resources: [`arn:aws:apigateway:${stack.region}::/tags/*`],
         actions: ["apigateway:*"],
       })
     );
-    lambdaPolicy.addStatements(
+    managedPolicy.addStatements(
       new PolicyStatement({
         effect: Effect.ALLOW,
         resources: [`arn:aws:apigateway:${stack.region}::/restapis`],
         actions: ["apigateway:POST"],
       })
     );
-    lambdaPolicy.addStatements(
+    managedPolicy.addStatements(
       new PolicyStatement({
         effect: Effect.ALLOW,
         resources: [`arn:aws:apigateway:${stack.region}::/restapis/*`],

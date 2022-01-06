@@ -7,11 +7,11 @@ type SamPolicyProps = RolePolicyProps & { deploymentBucketName: string };
 export class SamPolicy {
   constructor(stack: Stack, props: SamPolicyProps) {
     const { stackRegex, deploymentBucketName, role } = props;
-    const samPolicy = new ManagedPolicy(stack, "SAMPolicy", {
+    const managedPolicy = new ManagedPolicy(stack, "SAMPolicy", {
       description: `The minimum required policies for the AWS SAM: ${stack.stackName}`,
       roles: [role],
     });
-    samPolicy.addStatements(
+    managedPolicy.addStatements(
       new PolicyStatement({
         effect: Effect.ALLOW,
         resources: [
@@ -29,14 +29,14 @@ export class SamPolicy {
         ],
       })
     );
-    samPolicy.addStatements(
+    managedPolicy.addStatements(
       new PolicyStatement({
         effect: Effect.ALLOW,
         resources: [`arn:aws:s3:::${deploymentBucketName}/*`],
         actions: ["s3:PutObject", "s3:GetObject"],
       })
     );
-    samPolicy.addStatements(
+    managedPolicy.addStatements(
       new PolicyStatement({
         effect: Effect.ALLOW,
         resources: [`arn:aws:iam::${stack.account}:role/${stackRegex}`],
@@ -57,7 +57,7 @@ export class SamPolicy {
         ],
       })
     );
-    samPolicy.addStatements(
+    managedPolicy.addStatements(
       new PolicyStatement({
         effect: Effect.ALLOW,
         resources: ["*"],

@@ -4,11 +4,11 @@ import { RolePolicyProps } from "./types";
 
 export class LambdaPolicy {
   constructor(stack: Stack, { stackRegex, role }: RolePolicyProps) {
-    const lambdaPolicy = new ManagedPolicy(stack, "LambdaPolicy", {
+    const managedPolicy = new ManagedPolicy(stack, "LambdaPolicy", {
       description: `Policy to manage lambda functions: ${stack.stackName}`,
       roles: [role],
     });
-    lambdaPolicy.addStatements(
+    managedPolicy.addStatements(
       new PolicyStatement({
         effect: Effect.ALLOW,
         resources: [
