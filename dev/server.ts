@@ -1,7 +1,5 @@
 import { ApolloServer } from "apollo-server";
-import { typeDefs } from "../lib/schema";
-import { resolvers } from "../lib/resolvers";
-import { dataSources } from "../lib/context";
+import { typeDefs, resolvers, dataSources } from "../lib";
 import * as ioc from "../lib/ioc";
 
 const server = new ApolloServer({
@@ -11,6 +9,6 @@ const server = new ApolloServer({
   context: () => ({ ioc }),
 });
 
-server.listen().then(({ url }) => {
+server.listen(4000, "127.0.0.1").then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`);
 });
