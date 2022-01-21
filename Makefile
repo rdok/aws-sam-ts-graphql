@@ -48,6 +48,7 @@ deploy-dev:
 		--no-fail-on-empty-changeset
 
 update-all-npm:
+#	nvm install 14
 	npx npm-check --update-all
 	cd cicd-authorisation && npx npm-check --update-all
 
