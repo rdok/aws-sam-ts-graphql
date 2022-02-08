@@ -2,23 +2,25 @@ export AWS_REGION=$(shell jq -r '.region' infrastructurerc.json)
 export NAME=$(shell jq -r '.name' infrastructurerc.json)
 export ORG=$(shell jq -r '.org' infrastructurerc.json)
 export AWS_CICD_STACK_NAME=$(shell echo "${ORG}-cicd-${NAME}")
-export AWS_PROFILE=cicd_aws_sam_ts_graphql
+export AWS_PROFILE=default
 
 start-dev: node_modules
 	npm run dev
 
 InvokeGraphQL:
 	node events/generate-api-gateway-event.js
-	make build
+	make build-npm
+	sam build --template infrastructure.yml
 	sam local invoke \
 		--event events/APIGatewayProxyEvent.json \
-		--template-file infrastructure.yml \
+		--template-file .aws-sam/build/template.yaml \
 		--env-vars .env.dev.json \
 		'GraphQL'
 
 
 start-sam: node_modules
-	make build
+	make build-npm
+	sam build --template infrastructure.yml
 	sam local start-api --port 3003
 
 deploy-cicd-auth:
@@ -29,6 +31,7 @@ build-deploy-dev:
 	make deploy-dev
 
 deploy-dev:
+	export AWS_PROFILE=cicd_aws_sam_ts_graphql && \
 	AWS_ROLE_ARN=$$(aws --profile $$AWS_PROFILE --region $$AWS_REGION \
 		cloudformation describe-stacks --stack-name $$AWS_CICD_STACK_NAME \
 		--query 'Stacks[0].Outputs[?OutputKey==`CICDRoleARN`].OutputValue' \
@@ -69,11 +72,6 @@ lint-fix:
 
 build-npm: node_modules
 	npm run build
-build-sam:
-	sam build --template infrastructure.yml
-build:
-	make build-npm
-	make build-sam
 
 node_modules:
 	npm ci
