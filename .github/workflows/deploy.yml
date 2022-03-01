@@ -81,7 +81,7 @@ jobs:
           echo "AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN}" >> $GITHUB_ENV
 
           echo "AWS_ROLE_SESSION_NAME=cicd-access" >> $GITHUB_ENV
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with: { node-version: "14", cache: "npm" }
       - name: Install NPM packages
         run: npm ci
